@@ -5,35 +5,9 @@ import { camelTextToTitleText } from "../../inc/string";
 import DatePicker from "react-datepicker";
 import nl from "date-fns/locale/nl";
 import linkIcon from "../../icons/linkIcon.svg";
+import { IFieldConfig } from "../../type";
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.scss";
-
-export type TInputType =
-  | "string"
-  | "integer"
-  | "date"
-  | "date-time"
-  | "boolean"
-  | "array"
-  | "object";
-export interface IFieldConfig {
-  extractValue?: (
-    key: string,
-    val: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-    index?: number,
-    type?: TInputType
-  ) => any;
-  schema?: oas31.SchemaObject;
-  disabled?: boolean;
-  hidden?: boolean;
-  component?: string;
-  style?: React.CSSProperties;
-  inputType?: "select" | "input" | "date";
-  options?: { [key: string]: string }[];
-  isUrl?: boolean;
-}
 
 type ISchemaFormProps<T> = {
   schema: oas31.SchemaObject;
