@@ -1,8 +1,7 @@
 {
-  "name": "react-schema-form",
+  "name": "schema-form-component",
   "version": "0.1.0",
-  "module": "./lib/esm/index.js",
-  "main": "./lib/cjs/index.js",
+  "main": "dist/index.js",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -28,12 +27,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "tsc --project tsconfig.json",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf lib",
-    "copy-files": "copyfiles -e **/*.ts -e **/*.tsx -u 1 src/**/*/scss lib/esm/src",
-    "tsc": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && npm run copy-files",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -e **/*.ts -e **/*.tsx -u 1 src/**/* dist",
+    "tsc": "npm run clean && tsc -p tsconfig.json &&  npm run copy-files",
     "prepare": "npm run tsc"
   },
   "eslintConfig": {
