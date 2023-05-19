@@ -86,8 +86,7 @@ export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
         );
       };
       const { format, readOnly, enum: enumItems, maxLength } = schemaObject;
-      const asd = format === "url";
-      console.log(asd);
+
       if (format === "date" || format === "date-time") {
         return (
           <DatePicker
