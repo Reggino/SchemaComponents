@@ -4,9 +4,9 @@ import { getEmptyObject } from "../../inc/schema";
 import { camelTextToTitleText } from "../../inc/string";
 import DatePicker from "react-datepicker";
 import nl from "date-fns/locale/nl";
-import linkIcon from "../../icons/linkIcon.svg";
-import { IFieldConfig } from "../../type/field";
+import linkIcon from "../../styles/Icon/linkicon.svg";
 import "react-datepicker/dist/react-datepicker.css";
+import { IFieldConfig } from "../../type/field";
 import "./index.scss";
 
 type ISchemaFormProps<T> = {
@@ -60,7 +60,6 @@ export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
         );
       };
       const { format, readOnly, enum: enumItems, maxLength } = schemaObject;
-
       if (format === "date" || format === "date-time") {
         return (
           <DatePicker
@@ -118,9 +117,11 @@ export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
           </select>
         );
       }
+
       return (
         <input
           className={errorMessage ? "input-error" : ""}
+          type={configProps?.format === "url" ? "url" : "text"}
           placeholder={`Enter ${title}`}
           disabled={disableFields || readOnly}
           value={propValue || ""}
@@ -180,7 +181,8 @@ export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
             key,
             schemaObj,
             propValue || "",
-            errorMessage
+            errorMessage,
+            configProps
           );
         case "integer":
           return getIntegerField(
@@ -217,7 +219,6 @@ export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
           }
           break;
         default:
-          console.log(schemaObj);
           throw new Error("Unsupported schema");
       }
     },
@@ -259,9 +260,10 @@ export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
                       title,
                       index,
                       propValue,
-                      errorMessage
+                      errorMessage,
+                      propConfig
                     )}
-                    {propConfig?.isUrl ? (
+                    {propConfig?.format === "url" && propValue ? (
                       <img
                         className={"icon-button"}
                         alt={"link icon"}
@@ -272,9 +274,7 @@ export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
                           window.open(propValue, "_blank");
                         }}
                       />
-                    ) : (
-                      ""
-                    )}
+                    ) : null}
                   </div>
                   {errorMessage ? (
                     <div className={"errorMessage"}>{errorMessage}</div>

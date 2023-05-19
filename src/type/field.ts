@@ -25,5 +25,5 @@ export interface IFieldConfig {
   style?: React.CSSProperties;
   inputType?: "select" | "input" | "date";
   options?: { [key: string]: string }[];
-  isUrl?: boolean;
+  format?: "url";
 }
