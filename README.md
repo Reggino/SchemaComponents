@@ -37,7 +37,7 @@ const userSchema ={
 ```
 ```typescript jsx
     import React from 'react';
-    import { SchemaForm, IFieldConfig,TSchemaFormErrors } from "schema-form-component";
+    import { SchemaForm, IFieldConfig } from "schema-form-component";
 
     const config:{[keyName: string]: IFieldConfig} ={
         "id":{
