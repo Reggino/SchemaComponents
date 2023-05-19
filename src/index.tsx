@@ -1,4 +1,3 @@
-import SchemaForm from "./components/SchemaComponents/SchemaForm";
-import ListSchemaForm from "./components/SchemaComponents/ListSchemaForm";
+import SchemaForm from "./components/SchemaForm";
 
-export {SchemaForm,ListSchemaForm}
+export { SchemaForm };

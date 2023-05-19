@@ -1,25 +1,27 @@
 $border: 1.8px solid black;
 
-.schema-form{
+.schema-form {
   margin-right: 10px;
-  .item{
+
+  .item {
     display: flex;
     flex-direction: row;
     margin: 10px;
     flex-wrap: wrap;
-    &-title{
+
+    &-title {
       flex: 1;
       font-weight: 500;
       text-transform: capitalize;
     }
 
-    &-component{
+    &-component {
       flex: 1;
       font-weight: 500;
     }
   }
 
-  &-multiple{
+  &-multiple {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -27,25 +29,27 @@ $border: 1.8px solid black;
     max-height: 80vh;
     overflow: auto;
 
-    .item-multiple{
+    .item-multiple {
       margin: 0.5rem;
       flex: 1.5;
       border: 1px solid red;
 
-      &:last-child{
-        flex:0.5;
+      &:last-child {
+        flex: 0.5;
         text-align: center;
       }
-      &-title{
+
+      &-title {
         font-weight: 500;
         margin-bottom: 10px;
         text-transform: capitalize;
         white-space: nowrap;
       }
 
-      .item-component{
+      .item-component {
         margin-top: 10px;
-        img{
+
+        img {
           margin-top: 2px;
         }
       }
@@ -54,92 +58,96 @@ $border: 1.8px solid black;
 
 }
 
-.form-action-container{
+.form-action-container {
   display: flex;
   flex-direction: row;
 
-  #input-filter{
+  #input-filter {
     width: 60%;
     border-radius: 13px;
   }
 
-  img{
+  img {
     margin-right: 1.5rem;
     margin-top: 5px;
   }
 }
 
-.required-star-icon{
+.required-star-icon {
   color: red;
 }
 
-input{
+input {
   border-radius: 5px;
-  padding:5px;
+  padding: 5px;
   border: $border;
   width: 95%;
 }
 
-select{
+select {
   border-radius: 5px;
-  padding:5px;
+  padding: 5px;
   border: $border;
   width: 100%;
   text-transform: capitalize;
-  .select-option-disabled{
+
+  .select-option-disabled {
     color: red;
     cursor: no-drop;
   }
 }
 
-textarea{
+textarea {
   border-radius: 5px;
   border: $border;
   width: 95%;
-  padding:5px;
+  padding: 5px;
 }
 
-.input-error{
+.input-error {
   border-color: red;
 }
 
-.errorMessage{
+.errorMessage {
   color: red;
   font-size: 12px;
-  &::first-letter{
+
+  &::first-letter {
     text-transform: capitalize;
   }
 }
 
-.form-title{
+.form-title {
   font-size: 25px;
   font-weight: bold;
 }
 
 @media only screen and (max-width: 700px) {
-  .schema-form{
-    .item{
+  .schema-form {
+    .item {
       flex-direction: column;
     }
   }
 }
 
-.page-title{
+.page-title {
   font-size: 25px;
   font-weight: bold;
 }
 
-.list-schema-form{
+.list-schema-form {
   display: block;
-  .action-container{
+
+  .action-container {
     display: flex;
     flex-direction: row;
   }
-  .title{
-    padding:6px;
+
+  .title {
+    padding: 6px;
   }
 
-  .cell{
-    padding:6px;
+  .cell {
+    padding: 6px;
   }
 }
