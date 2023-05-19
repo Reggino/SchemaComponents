@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { oas31 } from "openapi3-ts";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../styles/SchemaForm.scss";
+import "./index.scss";
 export type TInputType = "string" | "integer" | "date" | "date-time" | "boolean" | "array" | "object";
 export interface IFieldConfig {
     extractValue?: (key: string, val: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number, type?: TInputType) => any;
