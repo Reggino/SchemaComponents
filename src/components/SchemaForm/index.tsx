@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import nl from "date-fns/locale/nl";
 import linkIcon from "../../icons/linkIcon.svg";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../styles/SchemaForm.scss";
+import "./index.scss";
 
 export type TInputType =
   | "string"
