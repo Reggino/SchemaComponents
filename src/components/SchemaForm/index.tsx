@@ -4,7 +4,7 @@ import { getEmptyObject } from "../../inc/schema";
 import { camelTextToTitleText } from "../../inc/string";
 import DatePicker from "react-datepicker";
 import nl from "date-fns/locale/nl";
-import linkIcon from "../../styles/Icon/linkicon.svg";
+import linkIcon from "../../icons/linkIcon.svg";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/SchemaForm.scss";
 

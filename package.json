@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
-  "files": [
-    "lib/"
-  ],
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
