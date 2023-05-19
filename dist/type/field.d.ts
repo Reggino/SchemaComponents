@@ -12,5 +12,5 @@ export interface IFieldConfig {
     options?: {
         [key: string]: string;
     }[];
-    isUrl?: boolean;
+    format?: "url";
 }

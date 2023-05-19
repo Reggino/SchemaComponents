@@ -4,7 +4,7 @@ import { getEmptyObject } from "../../inc/schema";
 import { camelTextToTitleText } from "../../inc/string";
 import DatePicker from "react-datepicker";
 import nl from "date-fns/locale/nl";
-import linkIcon from "../../icons/linkIcon.svg";
+import linkIcon from "../../styles/Icon/linkicon.svg";
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.scss";
 export default function NewSchemaForm(props) {
@@ -35,7 +35,7 @@ export default function NewSchemaForm(props) {
                         return (_jsx("option", Object.assign({ value: name }, { children: name }), id));
                     })] })));
         }
-        return (_jsx("input", { className: errorMessage ? "input-error" : "", placeholder: `Enter ${title}`, disabled: disableFields || readOnly, value: propValue || "", onChange: onStringInputChange }));
+        return (_jsx("input", { className: errorMessage ? "input-error" : "", type: (configProps === null || configProps === void 0 ? void 0 : configProps.format) === "url" ? "url" : "text", placeholder: `Enter ${title}`, disabled: disableFields || readOnly, value: propValue || "", onChange: onStringInputChange }));
     }, [disableFields, onInputChange, value]);
     const getIntegerField = React.useCallback((title, key, propValue, readOnly, minNumber) => {
         return (_jsx("input", { type: "number", className: ``, placeholder: `Enter ${title}`, disabled: disableFields || readOnly, value: propValue || "", min: minNumber, onChange: (e) => onInputChange(Object.assign(Object.assign({}, value), { [key]: parseInt(e.target.value) }), key) }));
@@ -45,7 +45,7 @@ export default function NewSchemaForm(props) {
         const { readOnly, minimum } = schemaObj;
         switch (schemaObj.type) {
             case "string":
-                return getStringField(title, key, schemaObj, propValue || "", errorMessage);
+                return getStringField(title, key, schemaObj, propValue || "", errorMessage, configProps);
             case "integer":
                 return getIntegerField(title, key, propValue || "", readOnly, minimum);
             case "array":
@@ -60,7 +60,6 @@ export default function NewSchemaForm(props) {
                 }
                 break;
             default:
-                console.log(schemaObj);
                 throw new Error("Unsupported schema");
         }
     }, [getIntegerField, getStringField]);
@@ -78,8 +77,8 @@ export default function NewSchemaForm(props) {
                     if (propConfig === null || propConfig === void 0 ? void 0 : propConfig.hidden) {
                         return null;
                     }
-                    return (_jsxs("div", Object.assign({ className: `item` }, { children: [_jsxs("div", Object.assign({ className: `item-title` }, { children: [(schemaObj === null || schemaObj === void 0 ? void 0 : schemaObj.title) || title, _jsx("span", Object.assign({ className: "required-star-icon" }, { children: isRequired && keyName !== "Action" ? " *" : "" }))] })), _jsxs("div", Object.assign({ className: "item-component" }, { children: [_jsxs("div", Object.assign({ className: "row" }, { children: [getComponent(schemaObj, keyName, title, index, propValue, errorMessage), (propConfig === null || propConfig === void 0 ? void 0 : propConfig.isUrl) ? (_jsx("img", { className: "icon-button", alt: "link icon", src: linkIcon, width: "30", height: "23", onClick: () => {
+                    return (_jsxs("div", Object.assign({ className: `item` }, { children: [_jsxs("div", Object.assign({ className: `item-title` }, { children: [(schemaObj === null || schemaObj === void 0 ? void 0 : schemaObj.title) || title, _jsx("span", Object.assign({ className: "required-star-icon" }, { children: isRequired && keyName !== "Action" ? " *" : "" }))] })), _jsxs("div", Object.assign({ className: "item-component" }, { children: [_jsxs("div", Object.assign({ className: "row" }, { children: [getComponent(schemaObj, keyName, title, index, propValue, errorMessage, propConfig), (propConfig === null || propConfig === void 0 ? void 0 : propConfig.format) === "url" && propValue ? (_jsx("img", { className: "icon-button", alt: "link icon", src: linkIcon, width: "30", height: "23", onClick: () => {
                                                     window.open(propValue, "_blank");
-                                                } })) : ("")] })), errorMessage ? (_jsx("div", Object.assign({ className: "errorMessage" }, { children: errorMessage }))) : null] }))] }), index));
+                                                } })) : null] })), errorMessage ? (_jsx("div", Object.assign({ className: "errorMessage" }, { children: errorMessage }))) : null] }))] }), index));
                 }), formButton] })) })));
 }
