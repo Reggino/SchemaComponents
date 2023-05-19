@@ -5,7 +5,7 @@ import { camelTextToTitleText } from "../../inc/string";
 import DatePicker from "react-datepicker";
 import nl from "date-fns/locale/nl";
 import linkIcon from "../../icons/linkIcon.svg";
-import { IFieldConfig } from "../../type";
+import { IFieldConfig } from "../../type/field";
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.scss";
 

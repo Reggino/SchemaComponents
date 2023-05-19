@@ -1,7 +1,7 @@
 import React from "react";
 import { oas31 } from "openapi3-ts";
 
-type TInputType =
+export type TInputType =
   | "string"
   | "integer"
   | "date"
@@ -9,7 +9,7 @@ type TInputType =
   | "boolean"
   | "array"
   | "object";
-interface IFieldConfig {
+export interface IFieldConfig {
   extractValue?: (
     key: string,
     val: React.ChangeEvent<

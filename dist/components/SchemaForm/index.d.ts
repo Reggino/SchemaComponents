@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { oas31 } from "openapi3-ts";
-import { IFieldConfig } from "../../type";
+import { IFieldConfig } from "../../type/field";
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.scss";
 type ISchemaFormProps<T> = {
