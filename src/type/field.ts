@@ -26,4 +26,5 @@ export interface IFieldConfig {
   inputType?: "select" | "input" | "date";
   options?: { [key: string]: string }[];
   format?: "url";
+  dateFormat?:string;
 }

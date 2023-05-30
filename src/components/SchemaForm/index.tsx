@@ -7,6 +7,7 @@ import nl from "date-fns/locale/nl";
 import linkIcon from "../../icons/linkIcon.svg";
 import "react-datepicker/dist/react-datepicker.css";
 import { IFieldConfig } from "../../type/field";
+import {format as formatDate} from 'date-fns';
 import "./index.scss";
 
 type ISchemaFormProps<T> = {
@@ -22,7 +23,8 @@ type ISchemaFormProps<T> = {
   formButton?: ReactNode;
 };
 
-export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
+const defaultDateFormat = "dd-MM-yyyy";
+export default function SchemaForm<T>(props: ISchemaFormProps<T>) {
   const {
     onInputChange,
     schema,
@@ -61,16 +63,23 @@ export default function NewSchemaForm<T>(props: ISchemaFormProps<T>) {
       };
       const { format, readOnly, enum: enumItems, maxLength } = schemaObject;
       if (format === "date" || format === "date-time") {
+
         return (
           <DatePicker
-            dateFormat="dd MMM yyyy"
+            dateFormat={configProps?.dateFormat || defaultDateFormat}
             locale={nl}
             selected={
               propValue
                 ? new Date(propValue as "date" | "date-time")
                 : new Date()
             }
-            onChange={() => {}}
+            onChange={(date) => onInputChange(
+                {
+                  ...value,
+                  [key]:date ?formatDate(date,configProps?.dateFormat || defaultDateFormat) : '',
+                },
+                key
+            )}
             disabled={readOnly || disableFields}
           />
         );
