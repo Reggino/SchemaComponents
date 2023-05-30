@@ -6,8 +6,10 @@ import DatePicker from "react-datepicker";
 import nl from "date-fns/locale/nl";
 import linkIcon from "../../icons/linkIcon.svg";
 import "react-datepicker/dist/react-datepicker.css";
+import { format as formatDate } from 'date-fns';
 import "./index.scss";
-export default function NewSchemaForm(props) {
+const defaultDateFormat = "dd-MM-yyyy";
+export default function SchemaForm(props) {
     const { onInputChange, schema, errorMessages = {}, value, config, disableFields, formTitle, formButton, } = props;
     const { properties = {}, required = [] } = schema;
     const getStringField = React.useCallback((title, key, schemaObject, propValue, errorMessage, configProps) => {
@@ -18,9 +20,9 @@ export default function NewSchemaForm(props) {
         };
         const { format, readOnly, enum: enumItems, maxLength } = schemaObject;
         if (format === "date" || format === "date-time") {
-            return (_jsx(DatePicker, { dateFormat: "dd MMM yyyy", locale: nl, selected: propValue
+            return (_jsx(DatePicker, { dateFormat: (configProps === null || configProps === void 0 ? void 0 : configProps.dateFormat) || defaultDateFormat, locale: nl, selected: propValue
                     ? new Date(propValue)
-                    : new Date(), onChange: () => { }, disabled: readOnly || disableFields }));
+                    : new Date(), onChange: (date) => onInputChange(Object.assign(Object.assign({}, value), { [key]: date ? formatDate(date, (configProps === null || configProps === void 0 ? void 0 : configProps.dateFormat) || defaultDateFormat) : '' }), key), disabled: readOnly || disableFields }));
         }
         if (maxLength && maxLength > 100) {
             return (_jsx("textarea", { className: errorMessage ? "input-error" : "", placeholder: `Enter ${title}`, disabled: disableFields || readOnly, value: propValue || "", rows: 6, onChange: onStringInputChange }));

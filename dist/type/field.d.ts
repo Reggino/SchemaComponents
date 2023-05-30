@@ -13,4 +13,5 @@ export interface IFieldConfig {
         [key: string]: string;
     }[];
     format?: "url";
+    dateFormat?: string;
 }

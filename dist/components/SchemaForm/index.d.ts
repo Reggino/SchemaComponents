@@ -15,5 +15,5 @@ type ISchemaFormProps<T> = {
     formTitle?: string;
     formButton?: ReactNode;
 };
-export default function NewSchemaForm<T>(props: ISchemaFormProps<T>): import("react/jsx-runtime").JSX.Element;
+export default function SchemaForm<T>(props: ISchemaFormProps<T>): import("react/jsx-runtime").JSX.Element;
 export {};
