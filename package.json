@@ -31,12 +31,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "tsc --project tsconfig.json",
+    "build": "tsc --project tsconfig.json  && sass src/components/SchemaForm/index.scss dist/index.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rimraf dist/",
-    "copy-files": "copyfiles -e **/*.ts -e **/*.tsx -u 1 src/**/* dist",
-    "tsc": "npm run clean && tsc -p tsconfig.json &&  npm run copy-files",
+    "tsc": "npm run clean && npm run build",
     "prepare": "npm run tsc"
   },
   "eslintConfig": {
